@@ -10,6 +10,8 @@ public class PlayerController2 : MonoBehaviour
     private bool isMoving;
     private Animator animator;
 
+    public LayerMask solidObjects;
+
     private void Awake() {
         animator = GetComponent<Animator>();
     }
@@ -25,13 +27,24 @@ public class PlayerController2 : MonoBehaviour
                 animator.SetFloat("moveX", input.x);
                 animator.SetFloat("moveY", input.y);
                 isMoving = true;
+                var targetPos = transform.position;
+                targetPos.x += input.x
+                targetPos.y += input.y;
                 Vector3 moveDirection = new Vector3(input.x, input.y, 0f);
-
-                transform.position += moveDirection * speed * Time.deltaTime;
+                if (isWalkable(targetPos))
+                    transform.position += moveDirection * speed * Time.deltaTime;
             }
         }
         animator.SetBool("isMoving", isMoving);
         isMoving = false;
+    }
+    private bool isWalkable(Vector3 targetPos)
+    {
+        if (Physics2.OverlapCircle(targetPos, 0.2f, solidObjects) != null)
+        {
+            return false;
+        }
+        return true;
     }
 }
 
