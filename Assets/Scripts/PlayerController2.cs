@@ -28,23 +28,29 @@ public class PlayerController2 : MonoBehaviour
                 animator.SetFloat("moveY", input.y);
                 isMoving = true;
                 var targetPos = transform.position;
-                targetPos.x += input.x
+                targetPos.x += input.x;
                 targetPos.y += input.y;
                 Vector3 moveDirection = new Vector3(input.x, input.y, 0f);
+                /*
                 if (isWalkable(targetPos))
                     transform.position += moveDirection * speed * Time.deltaTime;
+                    */
             }
         }
         animator.SetBool("isMoving", isMoving);
         isMoving = false;
     }
+    /*
     private bool isWalkable(Vector3 targetPos)
     {
+
         if (Physics2.OverlapCircle(targetPos, 0.2f, solidObjects) != null)
         {
             return false;
         }
         return true;
+        
     }
+    */
 }
 
