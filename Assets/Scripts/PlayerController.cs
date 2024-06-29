@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private void Awake() {
         animator = GetComponent<Animator>();
     }
-    public void Update()
+    public void HandleUpdate()
     {
         if (!isMoving) 
         { 

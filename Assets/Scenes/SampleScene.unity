@@ -827,6 +827,7 @@ MonoBehaviour:
   dialog:
     lines:
     - Testing
+    - Testing 2
 --- !u!1 &953213013
 GameObject:
   m_ObjectHideFlags: 0
