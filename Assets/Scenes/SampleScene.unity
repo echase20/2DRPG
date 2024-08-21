@@ -666,7 +666,7 @@ GameObject:
   - component: {fileID: 786220069}
   - component: {fileID: 786220068}
   - component: {fileID: 786220072}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Common Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1571,6 +1571,9 @@ MonoBehaviour:
   interactableObjects:
     serializedVersion: 2
     m_Bits: 256
+  mobObjects:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!70 &1583088837
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

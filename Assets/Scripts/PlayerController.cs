@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
+using UnityEngine.Timeline;
 using UnityEngine.XR;
 
 public class PlayerController : MonoBehaviour
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask solidObjects;
 
     public LayerMask interactableObjects;
+
+    public LayerMask mobObjects;
 
     private void Awake() {
         animator = GetComponent<Animator>();
@@ -68,6 +71,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
             Interact();
+        if (Input.GetKeyDown(KeyCode.F))
+            Attack();
     }
     void Interact() {
         var lookdirection = new Vector3(lastmove.x, lastmove.y);
@@ -81,6 +86,16 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    void Attack() {
+        var lookdirection = new Vector3(lastmove.x, lastmove.y);
+        var whereLooking = transform.position + lookdirection;
+
+        var collider = Physics2D.OverlapCircle(whereLooking, 0.2f, mobObjects);
+        if (collider != null)
+        {
+            collider.GetComponent<Attackable>()?.attack();
+        }
+    }
 
     private bool isWalkable(Vector3 targetPos)
     {

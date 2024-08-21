@@ -4,23 +4,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 
-public class MobController : MonoBehaviour, Interactable
+public class MobController : MonoBehaviour, Attackable
 {
 
     [SerializeField] Transform playerPosition;
     public float speed;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, playerPosition.position, speed * Time.deltaTime);
     }
-    public void Interact() {
+    public void attack() {
         gameObject.SetActive(false);
     }
 }
