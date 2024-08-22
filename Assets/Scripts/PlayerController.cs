@@ -8,6 +8,7 @@ using UnityEngine.XR;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    public float damage;
     private Vector2 input;
     private bool isMoving;
     private Animator animator;
